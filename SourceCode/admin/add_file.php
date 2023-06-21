@@ -123,7 +123,7 @@ input[type=file] {
             
             <li class="nav-item">
               <a href="logout.php" class="nav-link border border-light rounded waves-effect">
-               <i class="far fa-user-circle"></i>Logout
+               <i class=""></i>Logout
               </a>
             </li>
           </ul>
@@ -158,6 +158,8 @@ input[type=file] {
           <i class="fas fa-file-medical"></i> Documents</a>
         <a href="#" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-folder-open"></i> View User File</a>
+          <a href="#" class="list-group-item list-group-item-action waves-effect">
+          <i class="fas fa-envelope"></i> Document Requests</a>
             <!-- <a href="admin_log.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-chalkboard-teacher"></i> Admin Logs</a>
               <a href="user_log.php" class="list-group-item list-group-item-action waves-effect">
@@ -359,7 +361,7 @@ input[type=file] {
            <label for="subject" class="">Upload File</label>
           <input type="file" name="myfile"> <br>
           <button  type="submit" class="btn btn-info btn-rounded btn-block my-4 waves-effect z-depth-0"  name="save" type="submit">UPLOAD</button>
-         <footer style="font-size: 12px"><b>File Type:</b><font color="red"><i>.docx .doc .pptx .ppt .xlsx .xls .pdf .odt</i></font></footer>
+         <footer style="font-size: 12px"><b>File Type:</b><font color="red"><i>.docx .doc .pdf</i></font></footer>
         </form>
       </div>
     </div>

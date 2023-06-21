@@ -142,7 +142,7 @@ position:absolute;
             
             <li class="nav-item">
               <a href="logout.php" class="nav-link border border-light rounded waves-effect">
-               <i class="far fa-user-circle"></i>Logout
+               <i class=""></i>Logout
               </a>
             </li>
           </ul>
@@ -161,21 +161,29 @@ position:absolute;
         <img src="img/images.jpg" width="150px" height="200px;" class="img-fluid" alt="">
       </a>
           <div class="list-group list-group-flush">
-        <a href="dashboard.php" class="list-group-item waves-effect">
-          <i class="fas fa-chart-pie mr-3"></i>Dashboard
-        </a>
+
+       
+          <a href="dashboard.php" class="list-group-item list-group-item-action waves-effect">
+          <i class="fas fa-chart-pie mr-3"></i> Dashboard</a>
+
          <a href="#" class="list-group-item list-group-item-action waves-effect"  data-toggle="modal" data-target="#modalRegisterForm">
           <i class="fas fa-user mr-3"></i> Add Staff</a>
+
             <a href="view_admin.php" class="list-group-item list-group-item-action active waves-effect">
           <i class="fas fa-users"></i> View Staff/s</a>
+
         <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#modalRegisterForm2">
           <i class="fas fa-user mr-3"></i> Add User</a>
+
            <a href="view_user.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-users"></i> View User/s</a>
+
         <a href="add_document.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-file-medical"></i> Documents</a>
         <a href="view_userfile.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-folder-open"></i> View User File</a>
+          <a href="#" class="list-group-item list-group-item-action waves-effect">
+          <i class="fas fa-envelope"></i> Document Requests</a>
             <!-- <a href="admin_log.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-chalkboard-teacher"></i> Admin Logs</a>
               <a href="user_log.php" class="list-group-item list-group-item-action waves-effect">
@@ -321,7 +329,7 @@ position:absolute;
               <th>Name</th>
               <th>Admin Email</th>
               <!-- <th>Admin Password</th> -->
-              <th>Status</th>
+              <th>Role</th>
                <th>Action</th>
           </thead><br /><br />
           <tbody>
@@ -334,7 +342,7 @@ position:absolute;
               $id =  $rs['id'];
                $fname=$rs['name'];
                $admin=$rs['admin_user'];
-               $pass=$rs['admin_password'];
+              //  $pass=$rs['admin_password'];
                $status=$rs['admin_status'];
            
           ?>       
@@ -342,7 +350,7 @@ position:absolute;
            <tr>
                <td width='10%'><?php echo $fname; ?></td>
                <td align='center'><?php echo $admin; ?></td>
-               <td align='center' width="20%"><?php echo $pass; ?></td>
+               <!-- <td align='center' width="20%"><?php echo $pass; ?></td> -->
                <td align='center'><?php echo $status; ?></td>
                <td align='center'><a href="#modalRegisterFormsss?id=<?php echo $id;?>">
                 <i class="fas fa-user-edit" data-toggle="modal" data-target="#modalRegisterFormsss"></i> </a> | <a href="delete_admin.php?id=<?php echo htmlentities($rs['id']); ?>"><i class='far fa-trash-alt'></i></a></td>

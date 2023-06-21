@@ -113,7 +113,7 @@ position:absolute;
 
             <li class="nav-item">
               <a href="logout.php" class="nav-link border border-light rounded waves-effect">
-               <i class="far fa-user-circle"></i>Logout
+               <i class=""></i>Logout
               </a>
             </li>
           </ul>
@@ -127,9 +127,8 @@ position:absolute;
     <!-- Sidebar -->
     <div class="sidebar-fixed position-fixed">
 
-      <a class="logo-wrapper waves-effect">
       
-        <img src="img/images.jpg" width="150px" height="200px;" class="img-fluid" alt="">
+        <img src="img/car.jpg/" width="150px" height="200px;" class="img-fluid" alt="">
       </a>
 
       <div class="list-group list-group-flush">
@@ -148,6 +147,8 @@ position:absolute;
           <i class="fas fa-file-medical"></i> Documents</a>
         <a href="view_userfile.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-folder-open"></i> View User File</a>
+          <a href="#" class="list-group-item list-group-item-action waves-effect">
+          <i class="fas fa-envelope"></i> Document Requests</a>
             <!-- <a href="admin_log.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-chalkboard-teacher"></i> Admin logged</a>
               <a href="user_log.php" class="list-group-item list-group-item-action waves-effect">

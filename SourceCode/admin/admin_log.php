@@ -135,7 +135,7 @@ position:absolute;
            
             <li class="nav-item">
               <a href="logout.php" class="nav-link border border-light rounded waves-effect">
-               <i class="far fa-user-circle"></i>Logout
+               <i class=""></i>Logout
               </a>
             </li>
           </ul>

@@ -131,11 +131,11 @@ position:absolute;
 
           <!-- Right -->
           <ul class="navbar-nav nav-flex-icons">
-                <li style="margin-top: 10px;">Welcome!,</font> <?php echo ucwords(htmlentities($id)); ?></li>
+                <li style="margin-top: 10px;">Welcome!,<?php echo ucwords(htmlentities($id)); ?></li>
             
             <li class="nav-item">
               <a href="logout.php" class="nav-link border border-light rounded waves-effect">
-               <i class="far fa-user-circle"></i>Logout
+               <i class=""></i>Logout
               </a>
             </li>
           </ul>
@@ -170,6 +170,8 @@ position:absolute;
           <i class="fas fa-file-medical"></i> Documents</a>
         <a href="view_userfile.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-folder-open"></i> View User File</a>
+          <a href="#" class="list-group-item list-group-item-action waves-effect">
+          <i class="fas fa-envelope"></i> Document Requests</a>
             <!-- <a href="admin_log.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-chalkboard-teacher"></i> Admin Logs</a>
               <a href="user_log.php" class="list-group-item list-group-item-action waves-effect">
