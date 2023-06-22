@@ -14,7 +14,7 @@ if(!isset($_SESSION["admin_user"])){
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>iNFO HUB</title>
+  <title>iNFO HUB - Dashboard</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -23,6 +23,8 @@ if(!isset($_SESSION["admin_user"])){
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.min.css" rel="stylesheet">
+  
+  <link rel="icon" href="img\bsu-logo.png" type="image/png">
   <style>
 
     .map-container{
@@ -38,6 +40,25 @@ height:100%;
 width:100%;
 position:absolute;
 }
+#welcome{
+  background-Color:#eb1c24;
+  text:white;
+}
+#logout{
+  background-Color: #FFFFFF;
+  text:#eb1c24;
+}
+
+  #nav2 {
+    background-image: url('img\bsu-nav.png');
+  background-size: cover;
+  background-position: center;
+
+  nav {
+    width: 600px; /* Custom width */
+  }
+  
+}
  
   </style>
 
@@ -51,12 +72,15 @@ position:absolute;
   <header>
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar" id="nav2" style="background-image: url('img/bsu-nav.png'); background-size: cover;
+  background-repeat: no-repeat; height: 100px">
+  <!-- Rest of the code -->
+
       <div class="container-fluid">
 
         <!-- Brand -->
-        <a class="navbar-brand waves-effect" href="#">
-          <strong class="blue-text"></strong>
+        <a class="navbar-brand waves-effect" href="#"     >
+        <!-- <img src="img\bsu-nav.png" width="100" height="100" alt="Logo"> -->
         </a>
 
         <!-- Collapse -->
@@ -108,12 +132,12 @@ position:absolute;
 
           <!-- Right -->
           <ul class="navbar-nav nav-flex-icons">
-                  <li style="margin-top: 10px;">Welcome!,</font> <?php echo ucwords(htmlentities($id)); ?></li>
+                  <li style="margin-top: 10px" id="welcome"class="text-light font-weight-bold h4 p-2 mr-5 rounded">Welcome!, <?php echo ucwords(htmlentities($id)); ?></li>
           
 
             <li class="nav-item">
-              <a href="logout.php" class="nav-link border border-light rounded waves-effect">
-               <i class=""></i>Logout
+              <a href="logout.php" id="logout"class="nav-link text-danger font-weight-bold h4 bg-light p-2 mr-5 mt-2 rounded waves-effect">
+              Logout
               </a>
             </li>
           </ul>
@@ -125,13 +149,13 @@ position:absolute;
     <!-- Navbar -->
  <div id="loader"></div>
     <!-- Sidebar -->
-    <div class="sidebar-fixed position-fixed">
+    <div class="sidebar-fixed position-fixed ">
 
       
-        <img src="img/car.jpg/" width="150px" height="200px;" class="img-fluid" alt="">
+        <img src="img\bsu-logo.png" width="150px" height="200px;" class="img-fluid text-center mt-5 ml-4" alt="">
       </a>
 
-      <div class="list-group list-group-flush">
+      <div class="list-group list-group-flush mt-5">
         <a href="dashboard.php" class="list-group-item active waves-effect">
           <i class="fas fa-chart-pie mr-3"></i>Dashboard
         </a>
@@ -202,7 +226,7 @@ position:absolute;
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-info" name="reg">Add Staff</button>
+        <button class="btn btn-danger" name="reg">Add Staff</button>
       </div>
     </div>
   </div>
@@ -248,7 +272,7 @@ position:absolute;
         </div>
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-info" name="reguser">Add User</button>
+        <button class="btn btn-danger" name="reguser">Add User</button>
       </div>
     </div>
   </div>
@@ -259,7 +283,7 @@ position:absolute;
 
 
   <!--Main layout-->
-  <main class="pt-5 mx-lg-5">
+  <main class="pt-5 mx-lg-5 mt-5">
     <div class="container-fluid mt-5">
 
       <!-- Heading -->
@@ -269,7 +293,7 @@ position:absolute;
         <div class="card-body d-sm-flex justify-content-between">
 
           <h4 class="mb-2 mb-sm-0 pt-1">
-            <a href="dashboard.php">Homepage</a>
+            <a href="dashboard.php" class="text-danger">Homepage</a>
             <span>/</span>
             <span>Dashboard</span>
           </h4>

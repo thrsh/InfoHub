@@ -14,7 +14,7 @@ header('Location: index.html');
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>iNFO HUB</title>
+  <title>iNFO HUB - View Document</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -23,6 +23,8 @@ header('Location: index.html');
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.min.css" rel="stylesheet">
+
+  <link rel="icon" href="img\bsu-logo.png" type="image/png">
 
     <script src="js/jquery-1.8.3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="medias/css/dataTable.css" />
@@ -61,6 +63,43 @@ height:100%;
 width:100%;
 position:absolute;
 }
+.dataTables_filter input[type="search"] {
+    /* Add your custom styles here */
+    /* For example: */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    width: 400px;
+    /* Adjust the styles as per your requirements */
+  }
+  .dataTables_filter input[type="search"]:hover {
+    border-color: red;
+  
+    /* Adjust the styles as per your requirements */
+  }
+  .dataTables_filter.clicked input[type="search"] {
+  border-color: red;
+  }
+  /* Adjust the styles as per your requirements */
+  #nav2 {
+    background-image: url('img\bsu-nav.png');
+  background-size: cover;
+  background-position: center;
+
+  nav {
+    width: 600px; /* Custom width */
+  }
+  
+}
+  
+#welcome{
+  background-Color:#eb1c24;
+  text:white;
+}
+#logout{
+  background-Color: #FFFFFF;
+  text:#eb1c24;
+}
 
   </style>
 
@@ -74,7 +113,8 @@ position:absolute;
   <header>
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar" id="nav2" style="background-image: url('img/bsu-nav.png'); background-size: cover;
+  background-repeat: no-repeat; height: 100px;">
       <div class="container-fluid">
 
         <!-- Brand -->
@@ -131,11 +171,12 @@ position:absolute;
 
           <!-- Right -->
           <ul class="navbar-nav nav-flex-icons">
-                <li style="margin-top: 10px;">Welcome!,<?php echo ucwords(htmlentities($id)); ?></li>
-            
+                  <li style="margin-top: 10px" id="welcome"class="text-light font-weight-bold h4 bg-danger p-2 mr-5 rounded">Welcome!, <?php echo ucwords(htmlentities($id)); ?></li>
+          
+
             <li class="nav-item">
-              <a href="logout.php" class="nav-link border border-light rounded waves-effect">
-               <i class=""></i>Logout
+              <a href="logout.php" id="logout"class="nav-link text-danger font-weight-bold h4 bg-light p-2 mr-5 mt-2 rounded waves-effect">
+              Logout
               </a>
             </li>
           </ul>
@@ -148,15 +189,12 @@ position:absolute;
 
     <!-- Sidebar -->
     <div class="sidebar-fixed position-fixed">
+    <img src="img\bsu-logo.png" width="150px" height="200px;" class="img-fluid text-center mt-5 ml-4" alt="">
 
-      <a class="logo-wrapper waves-effect">
-      
-        <img src="img/images.jpg" width="90px" height="220px" class="img-fluid" alt="">
-      </a>
-
-         <div class="list-group list-group-flush">
-        <a href="dashboard.php" class="list-group-item waves-effect">
-          <i class="fas fa-chart-pie mr-3"></i>Dashboard
+         <div class="list-group list-group-flush mt-5">
+         <a href="dashboard.php" class="list-group-item list-group-item-action waves-effect">
+        <i class="fas fa-chart-pie mr-3"></i>Dashboard</a>
+           
         </a>
          <a href="#" class="list-group-item list-group-item-action waves-effect"  data-toggle="modal" data-target="#modalRegisterForm">
           <i class="fas fa-user mr-3"></i> Add Staff</a>
@@ -280,7 +318,7 @@ position:absolute;
   <!--Main Navigation-->
  <div id="loader"></div>
   <!--Main layout-->
-  <main class="pt-5 mx-lg-5">
+  <main class="pt-5 mx-lg-5 mt-5">
     <div class="container-fluid mt-5">
 
       <!-- Heading -->
@@ -290,7 +328,7 @@ position:absolute;
         <div class="card-body d-sm-flex justify-content-between">
 
           <h4 class="mb-2 mb-sm-0 pt-1">
-            <a href="dashboard.php">Homepage</a>
+            <a href="dashboard.php" class="text-danger">Homepage</a>
             <span>/</span>
             <span>Documents</span>
           </h4>
@@ -310,7 +348,7 @@ position:absolute;
       <!-- Heading -->
       <div class="">
     <!--   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalRegisterForm">Add File</button> -->
-    <a href="add_file.php"><button type="button" class="btn btn-success"><i class="fas fa-file-medical"></i>  Add File</button></a>
+    <a href="add_file.php"><button type="button" class="btn btn-danger"><i class="fas fa-file-medical"></i>  Add File</button></a>
     </div>
   
 <hr>
@@ -322,6 +360,9 @@ position:absolute;
 
     <th>Filename</th>
     <th>FileSize</th>
+    <th>DocumentTitle</th>
+    <th>RetentionPeriod</th>
+    <th>IssuanceDate</th>
     <th>Uploader</th>
      <th>Role</th>   
     <th>Date/Time Upload</th>
@@ -337,11 +378,14 @@ position:absolute;
    
         require_once("include/connection.php");
 
-      $query = mysqli_query($conn,"SELECT DISTINCT ID,NAME,SIZE,EMAIL,ADMIN_STATUS,TIMERS,DOWNLOAD FROM upload_files group by NAME DESC") or die (mysqli_error($con));
+      $query = mysqli_query($conn,"SELECT DISTINCT ID,NAME,SIZE,EMAIL,ADMIN_STATUS,TIMERS,DOWNLOAD,DocumentTitle,RetentionPeriod,IssuanceDate FROM upload_files group by NAME DESC") or die (mysqli_error($con));
       while($file=mysqli_fetch_array($query)){
          $id =  $file['ID'];
          $name =  $file['NAME'];
          $size =  $file['SIZE'];
+         $DocumentTitle =  $file['DocumentTitle'];
+         $RetentionPeriod =  $file['RetentionPeriod'];
+         $IssuanceDate =  $file['IssuanceDate'];
          $uploads =  $file['EMAIL'];
           $status =  $file['ADMIN_STATUS'];
          $time =  $file['TIMERS'];
@@ -351,6 +395,9 @@ position:absolute;
      
       <td width="20%"><?php echo  $name; ?></td>
       <td><?php echo floor($size / 1000) . ' KB'; ?></td>
+      <td><?php echo $DocumentTitle; ?></td>
+      <td><?php echo $RetentionPeriod; ?></td>
+      <td><?php echo $IssuanceDate; ?></td>
        <td><?php echo $uploads; ?></td>
        <td><?php echo $status; ?></td>
        <td><?php echo $time; ?></td>

@@ -22,7 +22,7 @@ else{
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>iNFO HUB</title>
+  <title>iNFO HUB - View Staff/s</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -32,6 +32,7 @@ else{
   <!-- Your custom styles (optional) -->
   <link href="css/style.min.css" rel="stylesheet">
 
+  <link rel="icon" href="img\bsu-logo.png" type="image/png">
     <script src="js/jquery-1.8.3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="medias/css/dataTable.css" />
     <script src="medias/js/jquery.dataTables.js" type="text/javascript"></script>
@@ -68,7 +69,35 @@ height:100%;
 width:100%;
 position:absolute;
 }
+.dataTables_filter input[type="search"] {
+    /* Add your custom styles here */
+    /* For example: */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    width: 400px;
+    /* Adjust the styles as per your requirements */
+  }
+  .dataTables_filter input[type="search"]:hover {
+    border-color: red;
+  
+    /* Adjust the styles as per your requirements */
+  }
+  .dataTables_filter.clicked input[type="search"] {
+  border-color: red;
 
+  /* Adjust the styles as per your requirements */
+}
+#nav2 {
+    background-image: url('img\bsu-nav.png');
+  background-size: cover;
+  background-position: center;
+
+  nav {
+    width: 600px; /* Custom width */
+  }
+  
+}
   </style>
 
     <script src="jquery.min.js"></script>
@@ -81,12 +110,14 @@ position:absolute;
   <header>
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar" id="nav2" 
+    style="background-image: url('img/bsu-nav.png');background-repeat: no-repeat;background-size: cover;
+   height: 100px;">
       <div class="container-fluid">
 
         <!-- Brand -->
         <a class="navbar-brand waves-effect" href="#">
-          <strong class="blue-text"></strong>
+        
         </a>
 
         <!-- Collapse -->
@@ -138,11 +169,12 @@ position:absolute;
 
           <!-- Right -->
           <ul class="navbar-nav nav-flex-icons">
-                <li style="margin-top: 10px;">Welcome!,</font> <?php echo ucwords(htmlentities($id)); ?></li>
-            
+                  <li style="margin-top: 10px" class="text-light font-weight-bold h4 bg-danger p-2 mr-5 rounded">Welcome!, <?php echo ucwords(htmlentities($id)); ?></li>
+          
+
             <li class="nav-item">
-              <a href="logout.php" class="nav-link border border-light rounded waves-effect">
-               <i class=""></i>Logout
+              <a href="logout.php" class="nav-link text-danger font-weight-bold h4 bg-light p-2 mr-5 mt-2 rounded waves-effect">
+              Logout
               </a>
             </li>
           </ul>
@@ -156,11 +188,11 @@ position:absolute;
     <!-- Sidebar -->
     <div class="sidebar-fixed position-fixed">
 
-      <a class="logo-wrapper waves-effect">
+     
       
-        <img src="img/images.jpg" width="150px" height="200px;" class="img-fluid" alt="">
-      </a>
-          <div class="list-group list-group-flush">
+      <img src="img\bsu-logo.png" width="150px" height="200px;" class="img-fluid text-center mt-5 ml-4" alt="">
+  
+          <div class="list-group list-group-flush mt-5">
 
        
           <a href="dashboard.php" class="list-group-item list-group-item-action waves-effect">
@@ -234,7 +266,7 @@ position:absolute;
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-info" name="reg">Add Staff</button>
+        <button class="btn btn-danger" name="reg">Add Staff</button>
       </div>
     </div>
   </div>
@@ -280,7 +312,7 @@ position:absolute;
         </div>
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-info" name="reguser">Add User</button>
+        <button class="btn btn-danger" name="reguser">Add User</button>
       </div>
     </div>
   </div>
@@ -293,7 +325,7 @@ position:absolute;
   <!--Main Navigation-->
  <div id="loader"></div>
   <!--Main layout-->
-  <main class="pt-5 mx-lg-5">
+  <main class="pt-5 mx-lg-5 mt-5">
     <div class="container-fluid mt-5">
 
       <!-- Heading -->
@@ -303,9 +335,9 @@ position:absolute;
         <div class="card-body d-sm-flex justify-content-between">
 
           <h4 class="mb-2 mb-sm-0 pt-1">
-            <a href="dashboard.php">Homepage</a>
+            <a href="dashboard.php" class="text-danger">Homepage</a>
             <span>/</span>
-            <span>View Admin</span>
+            <span>View Staff</span>
           </h4>
 <!-- 
           <form class="d-flex justify-content-center">

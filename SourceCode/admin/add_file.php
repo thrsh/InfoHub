@@ -14,7 +14,7 @@ if (!isset($_SESSION['admin_user'])) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>iNFO HUB</title>
+  <title>iNFO HUB - Add Document</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -24,6 +24,7 @@ if (!isset($_SESSION['admin_user'])) {
   <!-- Your custom styles (optional) -->
   <link href="css/style.min.css" rel="stylesheet">
 
+  <link rel="icon" href="img\bsu-logo.png" type="image/png">
     <script src="js/jquery-1.8.3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="medias/css/dataTable.css" />
     <script src="medias/js/jquery.dataTables.js" type="text/javascript"></script>
@@ -177,7 +178,7 @@ input[type=file] {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold"><i class="fas fa-user-plus"></i> Add Admin</h4>
+        <h4 class="modal-title w-100 font-weight-bold"><i class="fas fa-user-plus"></i> Add Staff</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -189,18 +190,18 @@ input[type=file] {
         <div class="md-form mb-5">
           <i class="fas fa-user prefix grey-text"></i>
           <input type="text" id="orangeForm-name" name="name" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Enter Name</label>
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-envelope prefix grey-text"></i>
           <input type="email" id="orangeForm-email" name="admin_user" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Enter Email</label>
         </div>
 
         <div class="md-form mb-4">
           <i class="fas fa-lock prefix grey-text"></i>
           <input type="password" id="orangeForm-pass" name="admin_password" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Enter Password</label>
         </div>
 
       </div>
@@ -219,7 +220,7 @@ input[type=file] {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold"><i class="fas fa-user-plus"></i> Add Admin</h4>
+        <h4 class="modal-title w-100 font-weight-bold"><i class="fas fa-user-plus"></i> Add Staff</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -231,18 +232,18 @@ input[type=file] {
         <div class="md-form mb-5">
           <i class="fas fa-user prefix grey-text"></i>
           <input type="text" id="orangeForm-name" name="name" class="form-control validate" required="">
-          <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Enter Name</label>
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-envelope prefix grey-text"></i>
           <input type="email" id="orangeForm-email" name="admin_user" class="form-control validate" required="">
-          <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Enter Email</label>
         </div>
 
         <div class="md-form mb-4">
           <i class="fas fa-lock prefix grey-text"></i>
           <input type="password" id="orangeForm-pass" name="admin_password" class="form-control validate" required="">
-          <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Enter Password</label>
         </div>
 
       </div>
@@ -261,7 +262,7 @@ input[type=file] {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold"><i class="fas fa-user-plus"></i> Add User Employee</h4>
+        <h4 class="modal-title w-100 font-weight-bold"><i class="fas fa-user-plus"></i> Add User</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -273,18 +274,18 @@ input[type=file] {
         <div class="md-form mb-5">
           <i class="fas fa-user prefix grey-text"></i>
           <input type="text" id="orangeForm-name" name="name" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Enter Name</label>
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-envelope prefix grey-text"></i>
           <input type="email" id="orangeForm-email" name="email_address" class="form-control validate" required="">
-          <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Enter Email</label>
         </div>
 
         <div class="md-form mb-4">
           <i class="fas fa-lock prefix grey-text"></i>
           <input type="password" id="orangeForm-pass" name="user_password" class="form-control validate" required="">
-          <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Enter Password</label>
         </div>
 
       </div>
@@ -356,6 +357,10 @@ input[type=file] {
               <div class="md-form mb-0">
                 <input type="hidden" name= "email" value="<?php echo ucwords(htmlentities($name)); ?>" class="form-control" readonly="">
                 <input type="text"  value="<?php echo ucwords(htmlentities($admin_status)); ?>" class="form-control" readonly="">
+                <input type="text" name = "docTitle" id="docTitle" value="" class="form-control" placeholder="Document Title" required>
+                <input type="text"  name="retPeriod" id="retPeriod" class="form-control" placeholder="Retention Period" required>
+                <input type="date"  name="issueDate" id="issueDate" class="form-control" placeholder="Issuance Date" required>
+
               </div>
             </div>
            <label for="subject" class="">Upload File</label>

@@ -7,8 +7,10 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
     // name of the uploaded file
 
   $user = $_POST['email'];
-
-    $filename = $_FILES['myfile']['name'];
+  $docTitle = $_POST['docTitle'];
+  $retPeriod = $_POST['retPeriod'];
+  $issueDate = $_POST['issueDate'];
+  $filename = $_FILES['myfile']['name'];
 
     // $Admin = $_FILES['admin']['name'];
     // destination of the file on the server
@@ -53,7 +55,8 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 
         // move the uploaded (temporary) file to the specified destination
         if (move_uploaded_file($file, $destination)) {
-            $sql = "INSERT INTO upload_files (name, size, download, timers, admin_status, email) VALUES ('$filename', $size, 0, '$time', 'Admin', '$user')";
+            $sql = "INSERT INTO upload_files (name, size, download, timers, admin_status, email, DocumentTitle, RetentionPeriod, IssuanceDate) 
+            VALUES ('$filename', $size, 0, '$time', 'Admin', '$user', '$docTitle', '$retPeriod', '$issueDate')";
             if (mysqli_query($conn, $sql)) {
                    echo '
                      <script type = "text/javascript">

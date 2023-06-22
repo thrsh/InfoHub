@@ -15,7 +15,7 @@ header('Location: index.html');
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>iNFO HUB</title>
+  <title>iNFO HUB - Documents</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -25,6 +25,7 @@ header('Location: index.html');
   <!-- Your custom styles (optional) -->
   <link href="css/style.min.css" rel="stylesheet">
 
+  <link rel="icon" href="img\bsu-logo.png" type="image/png">
     <script src="js/jquery-1.8.3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="medias/css/dataTable.css" />
     <script src="medias/js/jquery.dataTables.js" type="text/javascript"></script>
@@ -62,7 +63,35 @@ height:100%;
 width:100%;
 position:absolute;
 }
+.dataTables_filter input[type="search"] {
+    /* Add your custom styles here */
+    /* For example: */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    width: 400px;
+    /* Adjust the styles as per your requirements */
+  }
+  .dataTables_filter input[type="search"]:hover {
+    border-color: red;
+  
+    /* Adjust the styles as per your requirements */
+  }
+  .dataTables_filter.clicked input[type="search"] {
+  border-color: red;
 
+  /* Adjust the styles as per your requirements */
+}
+#nav2 {
+    background-image: url('img\bsu-nav.png');
+  background-size: cover;
+  background-position: center;
+
+  nav {
+    width: 600px; /* Custom width */
+  }
+  
+}
   </style>
 
     <script src="jquery.min.js"></script>
@@ -74,7 +103,9 @@ position:absolute;
   <header>
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar" id="nav2" 
+    style="background-image: url('img/bsu-nav.png');background-repeat: no-repeat;background-size: cover;
+   height: 100px;">
       <div class="container-fluid">
 
         <!-- Brand -->
@@ -131,11 +162,12 @@ position:absolute;
 
           <!-- Right -->
           <ul class="navbar-nav nav-flex-icons">
-                <li style="margin-top: 10px;">Welcome!, <?php echo ucwords(htmlentities($id)); ?></li>
-            
+                  <li style="margin-top: 10px" class="text-light font-weight-bold h4 bg-danger p-2 mr-5 rounded">Welcome!, <?php echo ucwords(htmlentities($id)); ?></li>
+          
+
             <li class="nav-item">
-              <a href="logout.php" class="nav-link border border-light rounded waves-effect">
-               <i class=""></i>Logout
+              <a href="logout.php" class="nav-link text-danger font-weight-bold h4 bg-light p-2 mr-5 mt-2 rounded waves-effect">
+              Logout
               </a>
             </li>
           </ul>
@@ -149,15 +181,11 @@ position:absolute;
     <!-- Sidebar -->
     <div class="sidebar-fixed position-fixed">
 
-      <a class="logo-wrapper waves-effect">
-      
-        <img src="img/images.jpg" width="150px" height="200px;" class="img-fluid" alt="">
-      </a>
-
-     <div class="list-group list-group-flush">
-        <a href="dashboard.php" class="list-group-item waves-effect">
-          <i class="fas fa-chart-pie mr-3"></i>Dashboard
-        </a>
+    <img src="img\bsu-logo.png" width="150px" height="200px;" class="img-fluid text-center mt-5 ml-4" alt="">
+     <div class="list-group list-group-flush mt-5">
+     <a href="dashboard.php" class="list-group-item list-group-item-action waves-effect">
+        <i class="fas fa-chart-pie mr-3"></i>Dashboard</a>
+           
          <a href="#" class="list-group-item list-group-item-action waves-effect"  data-toggle="modal" data-target="#modalRegisterForm">
           <i class="fas fa-user mr-3"></i>Add Staff</a>
             <a href="view_admin.php" class="list-group-item list-group-item-action waves-effect">
@@ -280,7 +308,7 @@ position:absolute;
   <!--Main Navigation-->
  <div id="loader"></div>
   <!--Main layout-->
-  <main class="pt-5 mx-lg-5">
+  <main class="pt-5 mx-lg-5 mt-5">
     <div class="container-fluid mt-5">
 
       <!-- Heading -->
@@ -290,19 +318,11 @@ position:absolute;
         <div class="card-body d-sm-flex justify-content-between">
 
           <h4 class="mb-2 mb-sm-0 pt-1">
-            <a href="dashboard.php">Homepage</a>
+            <a href="dashboard.php"class="text-danger">Homepage</a>
             <span>/</span>
             <span>View User Files</span>
           </h4>
-<!-- 
-          <form class="d-flex justify-content-center">
-       
-            <input type="search" placeholder="Type your query" aria-label="Search" class="form-control">
-            <button class="btn btn-primary btn-sm my-0 p" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
 
-          </form> -->
 
         </div>
 
@@ -310,7 +330,7 @@ position:absolute;
       <!-- Heading -->
       <div class="">
     <!--   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalRegisterForm">Add File</button> -->
-    <a href="add_document.php"><button type="button" class="btn btn-info"><i class="fas fa-chevron-circle-left"></i>  Document</button></a>
+    <a href="add_document.php"><button type="button" class="btn btn-danger"><i class="fas fa-chevron-circle-left"></i>  Document</button></a>
     </div>
   
 <hr>

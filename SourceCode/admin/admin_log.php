@@ -15,7 +15,7 @@ header('Location: index.html');
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design Bootstrap</title>
+  <title>iNFO HUB</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -25,6 +25,7 @@ header('Location: index.html');
   <!-- Your custom styles (optional) -->
   <link href="css/style.min.css" rel="stylesheet">
 
+  <link rel="icon" href="img\bsu-logo.png" type="image/png">
     <script src="js/jquery-1.8.3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="medias/css/dataTable.css" />
     <script src="medias/js/jquery.dataTables.js" type="text/javascript"></script>

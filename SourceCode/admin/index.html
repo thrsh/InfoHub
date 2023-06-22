@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>iNFO HUB</title>
+  <title>iNFO HUB - Login</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -15,15 +15,31 @@
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
 
+  <style>
+    #nav2 {
+    background-image: url('img\bsu-nav.png');
+  background-size: cover;
+  background-position: center;
+
+  nav {
+    width: 600px; /* Custom width */
+  }
   
+}
+.card{
+  margin-top: 140px;
+}
+
+  </style>
 </head>
 
 <body style="padding:0px; margin:0px; background-color:#fff;font-family:arial,helvetica,sans-serif,verdana,'Open Sans'">
 
   <!-- Start your project here-->
 <!--Navbar -->
-<nav class="mb-1 navbar navbar-expand-lg bg-primary text-light lighten-1">
-    <a class="navbar-brand" >Document Management System</a>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar" id="nav2" style="background-image: url('img/bsu-nav.png'); background-size: cover;
+background-repeat: no-repeat; height: 100px">
+   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
     aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -55,15 +71,18 @@
 <!--/.Navbar -->
 <br><Br>
 <!-- Card -->
-<div class="container col-md-5">
+<div class="container col-md-4">
  <!-- Card -->
-<div class="card">
+<div class="card border border-danger border-4">
  <div id="loader"></div>
     <!-- Card body -->
     <div class="card-body">
 
         <!-- Material form register -->
         <form action="admin_login.php" method="POST">
+          <div class="text-center">
+            <img src="img\bsu-logo.png" width="165px" height="220px;" class="img-fluid text-center mt-5 ml-4" alt="">
+          </div>
             <p class="h4 text-center py-4">ADMIN LOGIN</p>
 
             <!-- Material input text -->
@@ -81,7 +100,7 @@
             </div>
 
             <div class="text-center py-4 mt-3">
-                <button class="btn btn-primary btn-lg btn-block" name = "adminlog" id="login" type="submit">Sign In</button>
+                <button class="btn btn-danger btn-lg btn-block" name = "adminlog" id="login" type="submit">Log In</button>
             </div>
       
 
