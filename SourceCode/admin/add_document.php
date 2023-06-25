@@ -404,7 +404,16 @@ position:absolute;
       <td><?php echo $download; ?></td>
 
 
-           <td><a href='downloads.php?file_id=<?php echo $id; ?>'  class="btn btn-sm btn-outline-primary"><i class="fa fa-download"></i></a> <a href='delete.php?ID=<?php echo $id; ?>'  class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></a>
+           <td>
+            <a href='downloads.php?file_id=<?php echo $id; ?>'  
+           class="btn btn-sm btn-outline-primary">
+           <i class="fa fa-download"></i></a> 
+           <a href='delete.php?ID=<?php echo $id; ?>' 
+            class="btn btn-sm btn-outline-danger">
+            <i class="fa fa-trash"></i></a>
+            <a href='viewdoc.php?ID=<?php echo $id; ?>' 
+            class="btn btn-sm btn-outline-danger">
+            <i class="fa fa-file"></i></a>
     </tr>
 <?php } ?>
 </tbody>

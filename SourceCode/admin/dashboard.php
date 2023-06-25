@@ -63,7 +63,39 @@ position:absolute;
   </style>
 
     <script src="jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- <script>
+    $(document).ready(function() {
+      // Function to check if passwords match
+      function checkPasswordMatch() {
+        var password = $("#orangeForm-pass").val();
+        var confirmPassword = $("#orangeForm-pass2").val();
 
+        if (password !== confirmPassword) {
+          $("#password-match-message").html("Passwords do not match!");
+        } else {
+          $("#password-match-message").html("Passwords match.");
+        }
+      }
+
+      // Event handler for password and confirm password fields
+      $("#orangeForm-pass, #orangeForm-pass2").keyup(checkPasswordMatch);
+    });
+  </script> -->
+  <script>
+    function validatePassword() {
+      var password = document.getElementById("orangeForm-pass").value;
+      var confirmPassword = document.getElementById("orangeForm-pass2").value;
+
+      if (orangeForm-pass !== orangeForm-pass2) {
+        document.getElementById("password-match-message").innerHTML = "Passwords do not match!";
+        return false; // Prevent form submission
+      } else {
+        document.getElementById("password-match-message").innerHTML = "";
+        return true; // Allow form submission
+      }
+    }
+  </script>
 </head>
 
 <body class="grey lighten-3">
@@ -203,19 +235,35 @@ position:absolute;
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-name" name="name" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Enter Name</label>
+         
+          <input type="text" id="orangeForm-name" name="fname" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">First Name</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="fas fa-user prefix grey-text"></i>
+          <input type="text" id="orangeForm-name" name="lname" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Last Name</label>
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-envelope prefix grey-text"></i>
+        
           <input type="email" id="orangeForm-email" name="admin_user" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Enter Email</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Email</label>
         </div>
-
+        
         <div class="md-form mb-4">
           <i class="fas fa-lock prefix grey-text"></i>
+   
           <input type="password" id="orangeForm-pass" name="admin_password" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Enter Password</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Password</label>
+        
+        </div>
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+  
+          <input type="password" id="orangeForm-pass2" name="admin_password2" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Confirm Password</label>
+          <span id="password-match-message"></span>
         </div>
 
         <div class="md-form mb-4">
@@ -231,12 +279,13 @@ position:absolute;
     </div>
   </div>
 </div>
+
 </form>
 <!--end modaladmin-->
   <!--Add user-->
    <div class="modal fade" id="modalRegisterForm2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
-  <form action="create_user.php" method="POST">
+  <form action="create_user.php" method="POST"  >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
@@ -251,19 +300,35 @@ position:absolute;
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-name" name="name" class="form-control validate">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Enter Name</label>
+         
+          <input type="text" id="orangeForm-name" name="fname" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">First Name</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="fas fa-user prefix grey-text"></i>
+          <input type="text" id="orangeForm-name" name="lname" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Last Name</label>
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-envelope prefix grey-text"></i>
+        
           <input type="email" id="orangeForm-email" name="email_address" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Enter Email</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Email</label>
         </div>
-
+        
         <div class="md-form mb-4">
           <i class="fas fa-lock prefix grey-text"></i>
+   
           <input type="password" id="orangeForm-pass" name="user_password" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Enter Password</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Password</label>
+        
+        </div>
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+  
+          <input type="password" id="orangeForm-pass2" name="admin_password2" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Confirm Password</label>
+          <span id="password-match-message"></span>
         </div>
          <div class="md-form mb-4">
           <i class="fas fa-user prefix grey-text"></i>
@@ -277,6 +342,7 @@ position:absolute;
     </div>
   </div>
 </div>
+
 </form>
 <!--end modaluser-->
 

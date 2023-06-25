@@ -5,7 +5,8 @@
    if(isset($_POST['reguser'])){
     
         
-         $user_name = mysqli_real_escape_string($conn,$_POST['name']);
+         $user_fname = mysqli_real_escape_string($conn,$_POST['fname']);
+		 $user_lname = mysqli_real_escape_string($conn,$_POST['lname']);
          $email_address = mysqli_real_escape_string($conn,$_POST['email_address']);
          $user_password = password_hash($_POST['user_password'], PASSWORD_DEFAULT, array('cost' => 12));  //PASSWORD_ARGON2I//PASSWORD_ARGON2ID
          $user_status = mysqli_real_escape_string($conn,$_POST['user_status']);
@@ -20,7 +21,7 @@
 				</script>
 			';
 		}else{
-			$conn->query("INSERT INTO `login_user` VALUES('','$user_name', '$email_address', '$user_password', '$user_status')") or die(mysqli_error());
+			$conn->query("INSERT INTO `login_user` VALUES('','$user_fname','$user_lname', '$email_address', '$user_password', '$user_status')") or die(mysqli_error());
 			echo '
 				<script type = "text/javascript">
 					alert("Saved Employee Info");window.location = "dashboard.php";

@@ -23,7 +23,8 @@ if (!isset($_SESSION['admin_user'])) {
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.min.css" rel="stylesheet">
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth.js/1.4.0/mammoth.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
   <link rel="icon" href="img\bsu-logo.png" type="image/png">
     <script src="js/jquery-1.8.3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="medias/css/dataTable.css" />
@@ -68,7 +69,10 @@ input[type=file] {
     margin-left: 9px;
     width: 231px!important;
 }
-  
+#pdfContainer {
+            width: 100%;
+            height: 600px;
+        }
   </style>
 
     <script src="jquery.min.js"></script>
@@ -120,7 +124,7 @@ input[type=file] {
 
           <!-- Right -->
           <ul class="navbar-nav nav-flex-icons">
-            <li style="margin-top: 10px;">Welcome!,</font> <?php echo ucwords(htmlentities($id)); ?></li>
+            <li style="margin-top: 10px;">Welcome!, <?php echo ucwords(htmlentities($id)); ?></li>
             
             <li class="nav-item">
               <a href="logout.php" class="nav-link border border-light rounded waves-effect">
@@ -301,6 +305,8 @@ input[type=file] {
   </header>
   <!--Main Navigation-->
  <div id="loader"></div>
+ <div id="pdfContainer"></div>
+ <div id="docContainer"></div>
   <!--Main layout-->
   <main class="pt-5 mx-lg-5">
     <div class="container-fluid mt-5">
@@ -323,7 +329,9 @@ input[type=file] {
        
             <a href="add_document.php">
             <button class="btn btn-warning"><i class="far fa-file-image"></i>  View File</button></a>
+            
         </div>
+        
       </div>
       <hr>
     <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
