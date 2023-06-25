@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>iNFO HUB</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.min.css" rel="stylesheet">
+
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="medias/css/dataTable.css" />
+    <script src="medias/js/jquery.dataTables.js" type="text/javascript"></script>
+
+  <title>Document Request</title>
+  <style>
+    /* CSS for the sidebar */
+    .sidebar {
+      width: 200px;
+      height: 100%;
+      background-color: #f1f1f1;
+      position: fixed;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 16px;
+      text-decoration: none;
+      color: #000;
+    }
+
+    .sidebar a:hover {
+      background-color: #555;
+      color: white;
+    }
+
+    /* CSS for the content area */
+    .content {
+      margin-left: 200px; /* Same width as the sidebar */
+      padding: 16px;
+    }
+
+    /* CSS to hide the table by default */
+    #history-table {
+      display: none;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // When the request button is clicked
+      $("#request-button").click(function() {
+        // Get the document name and other details entered by the user
+        var documentName = $("#document-name").val();
+        var details = $("#details").val();
+        
+        // Perform any necessary validation
+        
+        // Send the request to the server
+        $.ajax({
+          url: "request_document.php",  // Replace with the actual URL to handle the request
+          method: "POST",
+          data: {
+            documentName: documentName,
+            details: details
+          },
+          success: function(response) {
+            // Handle the server response
+            if (response.status === 'success') {
+              alert(response.message);
+              // Show the table if request is successful
+              $("#history-table").show();
+              // Add a new row to the table
+              var newRow = "<tr><td>" + documentName + "</td><td>" + getCurrentDate() + "</td><td>Pending</td></tr>";
+              $("#history-table tbody").append(newRow);
+            } else {
+              alert(response.message);
+            }
+          },
+          error: function(xhr) {
+            // Handle any errors that occur during the request
+            alert("Error submitting document request. Please try again.");
+          }
+        });
+      });
+
+      // When the "History" option in the sidebar is clicked
+      $("#sidebar-history").click(function() {
+        // Show the table and hide other content
+        $("#history-table").show();
+        $("#request-form").hide();
+      });
+
+      // When the "Request Documents" option in the sidebar is clicked
+      $("#sidebar-request").click(function() {
+        // Show the request form and hide the table
+        $("#request-form").show();
+        $("#history-table").hide();
+      });
+
+      // Get the current date in YYYY-MM-DD format
+      function getCurrentDate() {
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = String(today.getMonth() + 1).padStart(2, '0');
+        var day = String(today.getDate()).padStart(2, '0');
+        return year + "-" + month + "-" + day;
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="#" id="sidebar-request">Request Documents</a>
+    <a href="#" id="sidebar-history">History</a>
+  </div>
+  <div class="content">
+    <h1>Document Request</h1>
+    <form id="request-form">
+      <label for="document-name">Document Name:</label>
+      <input type="text" id="document-name" required><br>
+      
+      <label for="details">Details:</label>
+      <textarea id="details" required></textarea><br>
+      
+      <button type="button" id="request-button">Request Document</button>
+    </form>
+    
+    <div id="history-table">
+      <h2>Document Request History</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Document Name</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be dynamically added here using JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
