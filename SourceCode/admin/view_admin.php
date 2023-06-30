@@ -214,7 +214,7 @@ position:absolute;
           <i class="fas fa-file-medical"></i> Documents</a>
         <a href="view_userfile.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-folder-open"></i> View User File</a>
-          <a href="#" class="list-group-item list-group-item-action waves-effect">
+          <a href="document_req.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-envelope"></i> Document Requests</a>
             <!-- <a href="admin_log.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-chalkboard-teacher"></i> Admin Logs</a>
@@ -243,19 +243,35 @@ position:absolute;
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-name" name="name" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Enter Name</label>
+         
+          <input type="text" id="orangeForm-name" name="fname" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">First Name</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="fas fa-user prefix grey-text"></i>
+          <input type="text" id="orangeForm-name" name="lname" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Last Name</label>
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-envelope prefix grey-text"></i>
+        
           <input type="email" id="orangeForm-email" name="admin_user" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Enter Email</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Email</label>
         </div>
-
+        
         <div class="md-form mb-4">
           <i class="fas fa-lock prefix grey-text"></i>
+   
           <input type="password" id="orangeForm-pass" name="admin_password" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Enter Password</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Password</label>
+        
+        </div>
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+  
+          <input type="password" id="orangeForm-pass2" name="admin_password2" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Confirm Password</label>
+          <span id="password-match-message"></span>
         </div>
 
         <div class="md-form mb-4">
@@ -271,12 +287,13 @@ position:absolute;
     </div>
   </div>
 </div>
+
 </form>
 <!--end modaladmin-->
   <!--Add user-->
    <div class="modal fade" id="modalRegisterForm2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
-  <form action="create_user.php" method="POST">
+  <form action="create_user.php" method="POST"  >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
@@ -291,19 +308,35 @@ position:absolute;
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-name" name="name" class="form-control validate">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Enter Name</label>
+         
+          <input type="text" id="orangeForm-name" name="fname" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">First Name</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="fas fa-user prefix grey-text"></i>
+          <input type="text" id="orangeForm-name" name="lname" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Last Name</label>
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-envelope prefix grey-text"></i>
+        
           <input type="email" id="orangeForm-email" name="email_address" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Enter Email</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Email</label>
         </div>
-
+        
         <div class="md-form mb-4">
           <i class="fas fa-lock prefix grey-text"></i>
+   
           <input type="password" id="orangeForm-pass" name="user_password" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Enter Password</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Password</label>
+        
+        </div>
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+  
+          <input type="password" id="orangeForm-pass2" name="admin_password2" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Confirm Password</label>
+          <span id="password-match-message"></span>
         </div>
          <div class="md-form mb-4">
           <i class="fas fa-user prefix grey-text"></i>
@@ -317,6 +350,7 @@ position:absolute;
     </div>
   </div>
 </div>
+
 </form>
 <!--end modaluser-->
     <!-- Sidebar -->
@@ -358,33 +392,34 @@ position:absolute;
 
 
           <thead>
-              <th>Name</th>
-              <th>Admin Email</th>
+              <th style='text-align: center;'>Name</th>
+              <th style='text-align: center;'>Admin Email</th>
               <!-- <th>Admin Password</th> -->
-              <th>Role</th>
-               <th>Action</th>
+              <th style='text-align: center;'>Role</th>
+               <th style='text-align: center;'>Action</th>
           </thead><br /><br />
           <tbody>
      <?php
          require_once("include/connection.php");
 
-            $query="SELECT * FROM admin_login";
+            $query="SELECT * FROM tbl_users WHERE role ='Staff'";
             $result=mysqli_query($conn,$query);
             while($rs=mysqli_fetch_array($result)){
               $id =  $rs['id'];
-               $fname=$rs['name'];
-               $admin=$rs['admin_user'];
+               $fname = $rs['first_name'];
+               $lname = $rs['last_name'];
+               $admin = $rs['admin_user'];
               //  $pass=$rs['admin_password'];
-               $status=$rs['admin_status'];
+               $status = $rs['role'];
            
           ?>       
     
            <tr>
-               <td width='10%'><?php echo $fname; ?></td>
-               <td align='center'><?php echo $admin; ?></td>
+               <td width='10%'><?php echo $fname.$lname; ?></td>
+               <td style='text-align: center;'><?php echo $admin; ?></td>
                <!-- <td align='center' width="20%"><?php echo $pass; ?></td> -->
-               <td align='center'><?php echo $status; ?></td>
-               <td align='center'><a href="#modalRegisterFormsss?id=<?php echo $id;?>">
+               <td style='text-align: center;'><?php echo $status; ?></td>
+               <td style='text-align: center;'><a href="#modalRegisterFormsss?id=<?php echo $id;?>">
                 <i class="fas fa-user-edit" data-toggle="modal" data-target="#modalRegisterFormsss"></i> </a> | <a href="delete_admin.php?id=<?php echo htmlentities($rs['id']); ?>"><i class='far fa-trash-alt'></i></a></td>
             
            </tr>
@@ -434,11 +469,12 @@ position:absolute;
 
 require_once("include/connection.php");
   
-$q = mysqli_query($conn,"select * from admin_login where id = '$id'") or die (mysqli_error($conn));
+$q = mysqli_query($conn,"select * from tbl_users where id = '$id'") or die (mysqli_error($conn));
  $rs1 = mysqli_fetch_array($q);
  
                $id1=$rs1['id'];
-               $fname1=$rs1['name'];
+               $fname1=$rs1['first_name'];
+               $lname1=$rs1['last_name'];
                $admin1=$rs1['admin_user'];
                $pass1=$rs1['admin_password'];
                $status=$rs1['admin_status'];
@@ -459,24 +495,29 @@ $q = mysqli_query($conn,"select * from admin_login where id = '$id'") or die (my
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-name" name="name" value="<?php echo $fname1;?>" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+          <input type="text" id="orangeForm-name" name="first_name" value="<?php echo $fname1;?>" class="form-control validate">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">First Name</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="fas fa-user prefix grey-text"></i>
+          <input type="text" id="orangeForm-name" name="last_name" value="<?php echo $lname1;?>" class="form-control validate">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Last Name</label>
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-envelope prefix grey-text"></i>
           <input type="email" id="orangeForm-email" name="admin_user" value="<?php echo $admin1;?>" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Email</label>
         </div>
 
         <div class="md-form mb-4">
           <i class="fas fa-lock prefix grey-text"></i>
           <input type="password" id="orangeForm-pass" name="admin_password" value="<?php echo $pass1;?>" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Password</label>
         </div>
           <div class="md-form mb-4">
           <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-pass" name="status" value = "Employee" class="form-control validate" readonly="">
-          <label data-error="wrong" data-success="right" for="orangeForm-pass">User Status</label>
+          <input type="text" id="orangeForm-pass" name="status" value = "Staff" class="form-control validate" readonly="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Role</label>
         </div>
       
       </div>
@@ -495,12 +536,13 @@ $q = mysqli_query($conn,"select * from admin_login where id = '$id'") or die (my
 
   
  if(isset($_POST['edit2'])){
-         $user_name = mysqli_real_escape_string($conn,$_POST['name']);
+         $fname = mysqli_real_escape_string($conn,$_POST['first_name']);
+         $lname = mysqli_real_escape_string($conn,$_POST['last_name']);
          $admin_user = mysqli_real_escape_string($conn,$_POST['admin_user']);
          $admin_password = password_hash($_POST['admin_password'], PASSWORD_DEFAULT, array('cost' => 12));  
        //  $user_status = mysqli_real_escape_string($conn,$_POST['status']);
 
-     mysqli_query($conn,"UPDATE `admin_login` SET `name` = '$user_name', `admin_user` = '$admin_user', `admin_password` = '$admin_password' where id='$id'") or die (mysqli_error($conn));
+     mysqli_query($conn,"UPDATE `tbl_users` SET `first_name` = '$fname',`last_name` = '$lname', `admin_user` = '$admin_user', `admin_password` = '$admin_password' where id='$id'") or die (mysqli_error($conn));
   
   echo "<script type = 'text/javascript'>alert('Success Edit User/Employee!!!');document.location='view_admin.php'</script>";
 

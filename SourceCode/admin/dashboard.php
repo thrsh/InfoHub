@@ -2,13 +2,23 @@
 <html lang="en">
 <?php
 
-session_start();
-if(!isset($_SESSION["admin_user"])){
-    header("location:index.html");
+// session_start();
+// if(!isset($_SESSION["admin_user"])){
+//     header("location:index.html");
 
-} else{
-    $uname = $_SESSION['admin_user'];
-}
+// } else{
+//     $uname = $_SESSION['admin_user'];
+// }
+
+if ($user_online == "true") {
+  if ($role == "admin") {
+  }else{
+  header("location:../");		
+  }
+  }else{
+  header("location:../");	
+  }
+  ?>
 ?>
 <head>
   <meta charset="utf-8">
@@ -203,7 +213,7 @@ position:absolute;
           <i class="fas fa-file-medical"></i> Documents</a>
         <a href="view_userfile.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-folder-open"></i> View User File</a>
-          <a href="#" class="list-group-item list-group-item-action waves-effect">
+          <a href="document_req.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-envelope"></i> Document Requests</a>
             <!-- <a href="admin_log.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-chalkboard-teacher"></i> Admin logged</a>
@@ -319,20 +329,20 @@ position:absolute;
         <div class="md-form mb-4">
           <i class="fas fa-lock prefix grey-text"></i>
    
-          <input type="password" id="orangeForm-pass" name="user_password" class="form-control validate" required="">
+          <input type="password" id="orangeForm-pass" name="password1" class="form-control validate" required="">
           <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Password</label>
         
         </div>
         <div class="md-form mb-4">
           <i class="fas fa-lock prefix grey-text"></i>
   
-          <input type="password" id="orangeForm-pass2" name="admin_password2" class="form-control validate" required="">
+          <input type="password" id="orangeForm-pass2" name="password2" class="form-control validate" required="">
           <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Confirm Password</label>
           <span id="password-match-message"></span>
         </div>
          <div class="md-form mb-4">
           <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-pass" name="user_status" value = "User" class="form-control validate" readonly="">
+          <input type="text" id="orangeForm-pass" name="role1" value = "" class="form-control validate" readonly="">
           <label data-error="Not Available" data-success="Available" for="orangeForm-pass">User Role</label>
         </div>
       </div>

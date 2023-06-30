@@ -208,7 +208,7 @@ position:absolute;
           <i class="fas fa-file-medical"></i> Documents</a>
         <a href="view_userfile.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-folder-open"></i> View User File</a>
-          <a href="#" class="list-group-item list-group-item-action waves-effect">
+          <a href="document_req.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-envelope"></i> Document Requests</a>
             <!-- <a href="admin_log.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-chalkboard-teacher"></i> Admin Logs</a>
@@ -220,8 +220,7 @@ position:absolute;
       </div>
 
     </div>
-  <!--Add admin-->
-  <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <form action="create_Admin.php" method="POST">
   <div class="modal-dialog" role="document">
@@ -237,19 +236,35 @@ position:absolute;
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-name" name="name" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Enter Name</label>
+         
+          <input type="text" id="orangeForm-name" name="fname" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">First Name</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="fas fa-user prefix grey-text"></i>
+          <input type="text" id="orangeForm-name" name="lname" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Last Name</label>
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-envelope prefix grey-text"></i>
+        
           <input type="email" id="orangeForm-email" name="admin_user" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Enter Email</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Email</label>
         </div>
-
+        
         <div class="md-form mb-4">
           <i class="fas fa-lock prefix grey-text"></i>
+   
           <input type="password" id="orangeForm-pass" name="admin_password" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Enter Password</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Password</label>
+        
+        </div>
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+  
+          <input type="password" id="orangeForm-pass2" name="admin_password2" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Confirm Password</label>
+          <span id="password-match-message"></span>
         </div>
 
         <div class="md-form mb-4">
@@ -260,17 +275,18 @@ position:absolute;
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-info" name="reg">Add Staff</button>
+        <button class="btn btn-danger" name="reg">Add Staff</button>
       </div>
     </div>
   </div>
 </div>
+
 </form>
 <!--end modaladmin-->
   <!--Add user-->
    <div class="modal fade" id="modalRegisterForm2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
-  <form action="create_user.php" method="POST">
+  <form action="create_user.php" method="POST"  >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
@@ -285,19 +301,35 @@ position:absolute;
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-name" name="name" class="form-control validate">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Enter Name</label>
+         
+          <input type="text" id="orangeForm-name" name="fname" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">First Name</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="fas fa-user prefix grey-text"></i>
+          <input type="text" id="orangeForm-name" name="lname" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Last Name</label>
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-envelope prefix grey-text"></i>
+        
           <input type="email" id="orangeForm-email" name="email_address" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Enter Email</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Email</label>
         </div>
-
+        
         <div class="md-form mb-4">
           <i class="fas fa-lock prefix grey-text"></i>
+   
           <input type="password" id="orangeForm-pass" name="user_password" class="form-control validate" required="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Enter Password</label>
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Password</label>
+        
+        </div>
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+  
+          <input type="password" id="orangeForm-pass2" name="admin_password2" class="form-control validate" required="">
+          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Confirm Password</label>
+          <span id="password-match-message"></span>
         </div>
          <div class="md-form mb-4">
           <i class="fas fa-user prefix grey-text"></i>
@@ -306,11 +338,12 @@ position:absolute;
         </div>
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-info" name="reguser">Add User</button>
+        <button class="btn btn-danger" name="reguser">Add User</button>
       </div>
     </div>
   </div>
 </div>
+
 </form>
 <!--end modaluser-->
 
@@ -358,16 +391,16 @@ position:absolute;
  <table id="dtable" class = "table table-striped">
      <thead>
 
-    <th>Filename</th>
-    <th>FileSize</th>
-    <th>DocumentTitle</th>
-    <th>RetentionPeriod</th>
-    <th>IssuanceDate</th>
-    <th>Uploader</th>
-     <th>Role</th>   
-    <th>Date/Time Upload</th>
-    <th>Downloads</th>
-    <th>Action</th>
+    <th style='text-align: center;'>Filename</th>
+    <th style='text-align: center;'>FileSize</th>
+    <th style='text-align: center;'>DocumentTitle</th>
+    <th style='text-align: center;'>RetentionPeriod</th>
+    <th style='text-align: center;'>IssuanceDate</th>
+    <th style='text-align: center;'>Uploader</th>
+     <th style='text-align: center;'>Role</th>   
+    <th style='text-align: center;'>Date/Time Upload</th>
+    <th style='text-align: center;'>Downloads</th>
+    <th style='text-align: center;'>Action</th>
 
 </thead>
 <tbody>
@@ -394,14 +427,14 @@ position:absolute;
       ?>
      
       <td width="20%"><?php echo  $name; ?></td>
-      <td><?php echo floor($size / 1000) . ' KB'; ?></td>
-      <td><?php echo $DocumentTitle; ?></td>
-      <td><?php echo $RetentionPeriod; ?></td>
-      <td><?php echo $IssuanceDate; ?></td>
-       <td><?php echo $uploads; ?></td>
-       <td><?php echo $status; ?></td>
-       <td><?php echo $time; ?></td>
-      <td><?php echo $download; ?></td>
+      <td style='text-align: center;'><?php echo floor($size / 1000) . ' KB'; ?></td>
+      <td style='text-align: center;'><?php echo $DocumentTitle; ?></td>
+      <td style='text-align: center;'><?php echo $RetentionPeriod; ?></td>
+      <td style='text-align: center;'><?php echo $IssuanceDate; ?></td>
+       <td style='text-align: center;'><?php echo $uploads; ?></td>
+       <td style='text-align: center;'><?php echo $status; ?></td>
+       <td style='text-align: center;'><?php echo $time; ?></td>
+      <td style='text-align: center;'><?php echo $download; ?></td>
 
 
            <td>

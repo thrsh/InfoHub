@@ -8,7 +8,7 @@ if(isset($_POST['reg'])){
     $user_password = password_hash($_POST['admin_password'], PASSWORD_DEFAULT, array('cost' => 12));  //PASSWORD_ARGON2I//PASSWORD_ARGON2ID
     $user_status = mysqli_real_escape_string($conn,$_POST['admin_status']);
 
-    $q_checkadmin = $conn->query("SELECT * FROM `admin_login` WHERE `admin_user` = '$user_email'") or die(mysqli_error($conn));
+    $q_checkadmin = $conn->query("SELECT * FROM `tbl_users` WHERE `admin_user` = '$user_email'") or die(mysqli_error($conn));
     $v_checkadmin = $q_checkadmin->num_rows;
     
     if($v_checkadmin == 1){
@@ -19,7 +19,7 @@ if(isset($_POST['reg'])){
             </script>
         ';
     }else{
-        $insert_query = "INSERT INTO `admin_login` VALUES('', '$user_fname', '$user_lname', '$user_email', '$user_password', '$user_status')";
+        $insert_query = "INSERT INTO `tbl_users` VALUES('', '$user_fname', '$user_lname', '$user_email', '$user_password', '$user_status')";
         if ($conn->query($insert_query) === TRUE) {
             echo '
                 <script type="text/javascript">

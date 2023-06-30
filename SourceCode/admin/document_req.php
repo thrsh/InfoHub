@@ -4,25 +4,18 @@
 
 // Inialize session
 session_start();
-error_reporting(0);
-        require_once("include/connection.php");
-  $id = mysqli_real_escape_string($conn,$_GET['id']);
-
 
 // Check, if username session is NOT set then this page will jump to login page
 if (!isset($_SESSION['admin_user'])) {
 header('Location: index.html');
 }
-else{
-    $uname=$_SESSION['admin_user'];
-  //  $desired_dir="user_data/$uname/";
-}
+
 ?>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>iNFO HUB - View User</title>
+  <title>iNFO HUB - Requests</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -42,6 +35,7 @@ else{
       $('#dtable').dataTable({
                 "aLengthMenu": [[5, 10, 15, 25, 50, 100 , -1], [5, 10, 15, 25, 50, 100, "All"]],
                 "iDisplayLength": 10
+                //"destroy":true;
             });
   })
     </script>
@@ -101,8 +95,6 @@ position:absolute;
   </style>
 
     <script src="jquery.min.js"></script>
-
-</script>
 </head>
 
 <body class="grey lighten-3">
@@ -111,8 +103,9 @@ position:absolute;
   <header>
 
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar" id="nav2" style="background-image: url('img/bsu-nav.png'); background-size: cover;
-  background-repeat: no-repeat; height: 100px">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar" id="nav2" 
+    style="background-image: url('img/bsu-nav.png');background-repeat: no-repeat;background-size: cover;
+   height: 100px;">
       <div class="container-fluid">
 
         <!-- Brand -->
@@ -188,30 +181,24 @@ position:absolute;
     <!-- Sidebar -->
     <div class="sidebar-fixed position-fixed">
 
-   
-      
-      <img src="img\bsu-logo.png" width="150px" height="200px;" class="img-fluid text-center mt-5 ml-4" alt="">
-   
-
-         <div class="list-group list-group-flush mt-5">
-         <a href="dashboard.php" class="list-group-item list-group-item-action waves-effect">
+    <img src="img\bsu-logo.png" width="150px" height="200px;" class="img-fluid text-center mt-5 ml-4" alt="">
+     <div class="list-group list-group-flush mt-5">
+     <a href="dashboard.php" class="list-group-item list-group-item-action waves-effect">
         <i class="fas fa-chart-pie mr-3"></i>Dashboard</a>
            
-
          <a href="#" class="list-group-item list-group-item-action waves-effect"  data-toggle="modal" data-target="#modalRegisterForm">
           <i class="fas fa-user mr-3"></i>Add Staff</a>
-
             <a href="view_admin.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-users"></i> View Staff/s</a>
         <a href="#" class="list-group-item list-group-item-action waves-effect" data-toggle="modal" data-target="#modalRegisterForm2">
           <i class="fas fa-user mr-3"></i>Add User</a>
-           <a href="view_user.php" class="list-group-item list-group-item-action active waves-effect">
+           <a href="view_user.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-users"></i>  View User/s</a>
         <a href="add_document.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-file-medical"></i> Documents</a>
         <a href="view_userfile.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-folder-open"></i> View User File</a>
-          <a href="document_req.php" class="list-group-item list-group-item-action waves-effect">
+          <a href="#" class="list-group-item list-group-item-action active waves-effect">
           <i class="fas fa-envelope"></i> Document Requests</a>
             <!-- <a href="admin_log.php" class="list-group-item list-group-item-action waves-effect">
           <i class="fas fa-chalkboard-teacher"></i> Admin Logs</a>
@@ -349,7 +336,6 @@ position:absolute;
 
 </form>
 <!--end modaluser-->
-    <!-- Sidebar -->
 
   </header>
   <!--Main Navigation-->
@@ -367,66 +353,71 @@ position:absolute;
           <h4 class="mb-2 mb-sm-0 pt-1">
             <a href="dashboard.php"class="text-danger">Homepage</a>
             <span>/</span>
-            <span>View Users</span>
+            <span>Document Requests</span>
           </h4>
-<!-- 
-          <form class="d-flex justify-content-center">
-       
-            <input type="search" placeholder="Type your query" aria-label="Search" class="form-control">
-            <button class="btn btn-primary btn-sm my-0 p" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
 
-          </form> -->
 
         </div>
 
       </div>
-<div class="">
+      <!-- Heading -->
+      <div class="">
+    <!--   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalRegisterForm">Add File</button> -->
+    <a href="add_document.php"><button type="button" class="btn btn-danger"><i class="fas fa-chevron-circle-left"></i>  Document</button></a>
+    </div>
   
+<hr>
+ 
+ <div class="col-md-12">
+
  <table id="dtable" class = "table table-striped">
+     <thead>
+
+    <th>Requestor</th>
+    <th>Document</th>
+    <th>Purpose</th>
+     <th>Date Requested</th>   
+     <th>Status</th>
 
 
-          <thead>
-              <th style='text-align: center;'>Name</th>
-              <th style='text-align: center;'>Email</th>
-              <!-- <th>Admin Password</th> -->
-              <th style='text-align: center;'>Role</th>
-               <th style='text-align: center;'>Action</th>
-          </thead><br /><br />
-          <tbody>
-     <?php
-         require_once("include/connection.php");
 
-         $query="SELECT * FROM tbl_users WHERE role ='Instructor'";
-            $result=mysqli_query($conn,$query);
-            while($rs=mysqli_fetch_array($result)){
-                $id =  $rs['id'];
-               $fname=$rs['first_name'];
-               $lname=$rs['last_name'];
-               $admin=$rs['admin_user'];
-              //  $pass=$rs['user_password'];
-               $status=$rs['role'];
-           
-          ?>       
+</thead>
+<tbody>
+
     
-           <tr>
-               <td width='10%'><?php echo  $fname. $lname; ?></td>
-               <td style='text-align: center;'><?php echo $admin; ?></td>
-               <!-- <td align='center'><?php echo $pass; ?></td> -->
-               <td style='text-align: center;'><?php echo $status; ?></td>
-               <td style='text-align: center;'><a href="#modalRegisterFormss?id=<?php echo $id;?>"><i class="fas fa-user-edit" data-toggle="modal" data-target="#modalRegisterFormss"></i></a>  <a href="delete_user.php?id=<?php echo htmlentities($rs['id']); ?>"><i class='far fa-trash-alt'></i></a></td>
-            
-           </tr>
-       
-    <?php  } ?>
-       </tbody>
-   </table>
+    <tr>
+        <?php 
+   
+        require_once("include/connection.php");
 
-<!-- <div class="text-center">
-  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Launch
-    Modal Register Form</a>
-</div> -->
+        $query="SELECT * FROM document_requests";
+        $result=mysqli_query($conn,$query);
+        while($rs=mysqli_fetch_array($result)){
+          $id = $rs['id'];
+          $requestor = $rs['requestor'];
+          $document = $rs['document'];
+          $purpose = $rs['purpose'];
+          $date_requested = $rs['date_requested'];
+          $status = $rs['status'];
+  
+    
+      ?>
+     
+      <td><?php echo  $requestor; ?></td>
+      <td><?php echo $document; ?></td>
+       <td><?php echo $purpose; ?></td>
+       <td><?php echo $date_requested; ?></td>
+       <td><?php echo $status; ?></td>
+       
+   
+    <!--   <td><a href='downloads.php?file_id=<?php echo $id; ?>'><button class='btn btn-warning' value=''><i class="fas fa-download"></i></button></a> <a href="../uploads/<?php echo  $name; ?>"><button class='btn btn-info' value='' ><i class="fas fa-eye"></i></button></a> <a href='delete.php?ID=<?php echo $id; ?>'><button class='btn btn-danger' value=''><i class="fas fa-trash-alt"></i></button></a></td> -->
+
+    </tr>
+<?php } ?>
+</tbody>
+   </table>
+    </div>  
+    <!--Copyright-->
     <hr></div>
     <div class="footer-copyright py-3">
    
@@ -455,96 +446,5 @@ position:absolute;
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/1.0.3/js/dataTables.responsive.js"></script>
 
 </body>
-   <!--modal--->
 
-
-
-
-
-
-<div class="modal fade" id="modalRegisterFormss" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-    <?php 
-
-require_once("include/connection.php");
-  
-$q = mysqli_query($conn,"select * from tbl_users where id = '$id'") or die (mysqli_error($conn));
- $rs1 = mysqli_fetch_array($q);
- 
-               $id1=$rs1['id'];
-               $fname1=$rs1['first_name'];
-               $lname1=$rs1['last_name'];
-               $admin1=$rs1['admin_user'];
-               $pass1=$rs1['admin_password'];
-               $status=$rs1['role'];
-?>
-  <div class="modal-dialog" role="document">
-    <form method="POST">
-    
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold"><i class="fas fa-user-edit"></i> Edit User</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-        <div class="modal-body mx-3">
-           <div class="md-form mb-5">
-            <input type="hidden" class="form-control" name="id" value="<?php echo $id1;?>"><br>
-        </div>
-        <div class="md-form mb-5">
-          <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-name" name="fname" value="<?php echo $fname1;?>" class="form-control validate">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-name">First Name</label>
-        </div>
-        <div class="md-form mb-5">
-          <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-name" name="lname" value="<?php echo $lname1;?>" class="form-control validate">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-name">Last Name</label>
-        </div>
-        <div class="md-form mb-5">
-          <i class="fas fa-envelope prefix grey-text"></i>
-          <input type="email" id="orangeForm-email" name="email_address" value="<?php echo $admin1;?>" class="form-control validate">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-email">Email</label>
-        </div>
-
-        <div class="md-form mb-4">
-          <i class="fas fa-lock prefix grey-text"></i>
-          <input type="password" id="orangeForm-pass" name="user_password" value="<?php echo $pass1;?>" class="form-control validate">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">Password</label>
-        </div>
-       <div class="md-form mb-4">
-          <i class="fas fa-user prefix grey-text"></i>
-          <input type="text" id="orangeForm-pass" name="status" value = "Instructor" class="form-control validate" readonly="">
-          <label data-error="Not Available" data-success="Available" for="orangeForm-pass">User Role</label>
-        </div>
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-primary" name="edit">UPDATE</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-  <!--modal--->
- <?php 
-
- require_once("include/connection.php");
-
-  
- if(isset($_POST['edit'])){
-         $user_name = mysqli_real_escape_string($conn,$_POST['first_name']);
-         $user_name = mysqli_real_escape_string($conn,$_POST['last_name']);
-         $email_address = mysqli_real_escape_string($conn,$_POST['email_address']);
-         $user_password = password_hash($_POST['user_password'], PASSWORD_DEFAULT, array('cost' => 12));  
-       //  $user_status = mysqli_real_escape_string($conn,$_POST['status']);
-
-     mysqli_query($conn,"UPDATE `tbl_user` SET `first_name` = '$first_name', `last_name` = '$last_name',`admin_user` = '$email_address', `admin_password` = '$user_password' where id='$id'") or die (mysqli_error($conn));
-  
-  echo "<script type = 'text/javascript'>alert('Success Edit User/Employee!!!');document.location='view_user.php'</script>";
-
-}
-
-?>
 </html>
